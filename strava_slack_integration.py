@@ -2,7 +2,6 @@ import urllib
 import json
 import requests
 import time
-import matplotib
 
 
 def minute(s):  # converts to min:seconds format
