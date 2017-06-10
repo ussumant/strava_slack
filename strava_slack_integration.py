@@ -16,8 +16,11 @@ def minute(s):  # converts to min:seconds format
 kk= requests.get("https://www.strava.com/api/v3/clubs/240555/activities", headers={ 'Authorization':' Bearer 4c1fd5abb6ca406b90ca5d0cf345c78ea69554d9'})
 dta= json.loads(kk.text)    
     
-dt= dta[0]['id']
-dt=964443361
+#dt= dta[0]['id']
+text_file = open("Output.txt", "r")
+dt=int(text_file.read())
+#text_file.close()
+
 k=10
 
 for i in range(k):
@@ -26,7 +29,7 @@ for i in range(k):
     k=k+1
     if data[0]['id']==dt:
         print("same",dt)
-        time.sleep(200);
+        time.sleep(1000);
 
     else:
         d= data[0]['id']
@@ -58,5 +61,8 @@ for i in range(k):
         )
         dt= data[0]['id']
         print("new", dt)
+        text_file = open("Output.txt", "w")
+        text_file.write(str(dt))
+        text_file.close()
 
 
