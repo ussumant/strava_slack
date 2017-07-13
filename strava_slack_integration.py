@@ -40,13 +40,13 @@ for i in range(k):
         speed= minute(sped) # speed in min/km
         e= (data[0]['elapsed_time'])/60
         e_time= minute(e)# elapsed time in minutes
-        webhook_url = "https://hooks.slack.com/services/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"
+        webhook_url = "<SLACK WEBHOOK>"
         slack_data = {"username": "Strava", "icon_emoji": ":runner:",
             "attachments": [
                 {
                     "title": str(dist)+" km",
                     "pretext": name +" just went for a run!",
-                    "text": "He _did it_ with a pace of *"+str(speed)+" min/km* with a total time of *"+str(e_time)+" minutes*",
+                    "text": "He did it with a pace of *"+str(speed)+" min/km* with a total time of *"+str(e_time)+" minutes*",
                     "mrkdwn_in": [
                         "text",
                         "pretext"
