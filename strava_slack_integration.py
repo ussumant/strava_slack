@@ -13,7 +13,7 @@ import time
 def minute(s):  # converts to min:seconds format
     z= ((s- int(s))*60)/100
     return round((int(s)+z),2)
-kk= requests.get("https://www.strava.com/api/v3/clubs/240555/activities", headers={ 'Authorization':' Bearer 4c1fd5abb6ca406b90ca5d0cf345c78ea69554d9'})
+kk= requests.get("https://www.strava.com/api/v3/clubs/240555/activities", headers={ 'Authorization':' Bearer <API KEY STRAVA>'})
 dta= json.loads(kk.text)    
     
 #dt= dta[0]['id']
@@ -24,7 +24,7 @@ dt=int(text_file.read())
 k=10
 
 for i in range(k):
-    r= requests.get("https://www.strava.com/api/v3/clubs/240555/activities", headers={ 'Authorization':' Bearer 4c1fd5abb6ca406b90ca5d0cf345c78ea69554d9'})
+    r= requests.get("https://www.strava.com/api/v3/clubs/240555/activities", headers={ 'Authorization':' Bearer <API KEY STRAVA>'})
     data= json.loads(r.text)
     k=k+1
     if data[0]['id']==dt:
