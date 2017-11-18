@@ -35,25 +35,41 @@ for i in range(k):
         d= data[0]['id']
         print(dt)
         name= data[0]['athlete']['firstname']
+        sex= data[0]['athlete']['sex']
         dist= round(((data[0]['distance'])/1000),2) # distance in km
         sped=1/((data[0]['average_speed'])*0.06)
         speed= minute(sped) # speed in min/km
         e= (data[0]['elapsed_time'])/60
         e_time= minute(e)# elapsed time in minutes
         webhook_url = "<SLACK WEBHOOK>"
-        slack_data = {"username": "Strava", "icon_emoji": ":runner:",
-            "attachments": [
-                {
-                    "title": str(dist)+" km",
-                    "pretext": name +" just went for a run!",
-                    "text": "He did it with a pace of *"+str(speed)+" min/km* with a total time of *"+str(e_time)+" minutes*",
-                    "mrkdwn_in": [
-                        "text",
-                        "pretext"
-                    ]
-                }
-            ]
-        }
+        if sex=='M':
+            slack_data = {"username": "Strava", "icon_emoji": ":runner:",
+                "attachments": [
+                    {
+                        "title": str(dist)+" km",
+                        "pretext": name +" just went for a run!",
+                        "text": "He did it with a pace of *"+str(speed)+" min/km* with a total time of *"+str(e_time)+" minutes*",
+                        "mrkdwn_in": [
+                            "text",
+                            "pretext"
+                        ]
+                    }
+                ]
+            }
+        else:
+            slack_data = {"username": "Strava", "icon_emoji": ":runner:",
+                "attachments": [
+                    {
+                        "title": str(dist)+" km",
+                        "pretext": name +" just went for a run!",
+                        "text": "She did it with a pace of *"+str(speed)+" min/km* with a total time of *"+str(e_time)+" minutes*",
+                        "mrkdwn_in": [
+                            "text",
+                            "pretext"
+                        ]
+                    }
+                ]
+            }
 
         response = requests.post(
             webhook_url, data=json.dumps(slack_data),
